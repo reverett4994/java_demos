@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require sweetalert
+ *= require_self
+ *= require owl.carousel
+ *= require owl.theme
+ */
+ // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+
+ // Place all the styles related to the posts controller here.
+ // They will automatically be included in application.css.
+ // You can use Sass (SCSS) here: http://sass-lang.com/
+ /* Remove the navbar's default margin-bottom and rounded borders */
+ .navbar {
+   margin-bottom: 0;
+   border-radius: 0;
+ }
+
+ /* Add a gray background color and some padding to the footer */
+ footer {
+   background-color: #f2f2f2;
+   padding: 25px;
+ }
+ h1{
+   text-align: center;
+ }
+ .col-sm-3{
+   background-color: pink;
+
+ }
+ .col-xs-2 {
+   background-color: #428bca;
+   color: white;
+   font-size: 30px;
+   padding: 20px;
+   border: .05em solid black;
+ }
+ .col-xs-2:hover{
+   background-color: #2d6a9f;
+ }
+ .col-xs-5 {
+   background-color: #428bca;
+   color: white;
+   font-size: 30px;
+   padding: 20px;
+   border: .05em solid black;
+ }
+ .col-xs-5:hover{
+   background-color: #2d6a9f;
+ }
+
+     #carousel_wrapper div{
+       margin: 3px;
+     }
+     #carousel_wrapper div img{
+       display: block;
+       width: 100%;
+       height: auto;
+     }
+ #wrapper{
+   text-align: center;
+ }
+ #c_carousel{
+   width: 310px;
+   height: 210px;
+   border: 5px solid black;
+   margin-left: auto;
+   margin-right: auto;
+   display: inline-block;
+ }
+ #hidden_pics img {
+   display: none;
+ }
+ .button{
+   width: 25px;
+   height: 25px;
+   border-radius: 100%;
+   background-color: blue;
+   display: inline-block;
+ }
+ .pic_button{
+   width: 25px;
+   height: 25px;
+   border-radius: 100%;
+   border: 5px solid grey;
+   display: inline-block;
+   margin-top: 20px;
+ }
+ .jumbotron p {
+   padding-left: 25px;
+ }
+
+
+
+
+
+ #tictactoe_board div{
+   background-color: #428bca;
+   border: 1px solid black;
+   height: 170px;
+   font-size: 65px;
+   color: white;
+ }
+ #tictactoe_board div:hover{
+   background-color: #2d6a9f;
+ }
+ #new_game{
+   clear: both;
+   margin-left: auto;
+   margin-right: auto;
+ }

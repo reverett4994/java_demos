@@ -1,0 +1,93 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Purely JavaScript Things',page_path('calculator'),class:"navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Calculator', page_path('calculator') %></li>
+        <li><%= link_to 'Custom Carousel', page_path('carousel') %></li>
+        <li><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
+        <li class="active"><%= link_to 'jQuery Form', page_path('demoform') %></li>
+        <li><%= link_to 'About', page_path('about') %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"onclick="myFunction(123)"><span class="glyphicon glyphicon-refresh"></span> Clear</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="page-header">
+    <h1>Demo Form Using jQuery Validations</h1>
+  </div>
+
+  <form class="form-horizontal">
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="email">Email*:</label>
+     <div class="col-sm-10">
+       <input name="email_confirmation"  data-validation-help="Enter Your Current Email" data-validation="email" type="email" class="form-control" id="email" placeholder="Enter email">
+     </div>
+   </div>
+
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="pwd">Password*:</label>
+     <div class="col-sm-10">
+       <input name="pass_confirmation" data-validation-help="Must Include at Least One Number and Minimum Nine Charcters" data-validation="strength" data-validation-strength="2" type="password" class="form-control" id="pwd" placeholder="Enter password">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="pwd">Re-enter Password*:</label>
+     <div class="col-sm-10">
+       <input name="pass"  data-validation-help="Re-enter Password" data-validation="confirmation" type="password" class="form-control" id="pwd" placeholder="Re-enter password">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="pwd">Country:</label>
+     <div class="col-sm-10">
+       <input data-validation-help="Your Current Country"data-suggestions="UnitedStates, Canada, Mexico, UnitedKingdom, Germany" type="text" class="form-control" id="pwd" placeholder="Enter Country">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="pwd">Zip Code*:</label>
+     <div class="col-sm-10">
+       <input data-validation-help="Format: '12345' or '12345-1234'" data-validation="custom" data-validation-regexp="^\d{5}(?:[-\s]\d{4})?$" type="text" class="form-control" id="pwd" placeholder="Enter Zip Code">
+     </div>
+   </div>
+   <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10">
+       <div class="checkbox">
+         <label><input type="checkbox"> Remember me</label>
+       </div>
+     </div>
+   </div>
+   <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10">
+       <button type="submit"  class="btn btn-default">Submit</button>
+     </div>
+   </div>
+  </form>
+
+</div>
+
+
+
+<script>
+  $.validate({
+    lang: 'en',
+    modules : 'security',
+    onSuccess : function($form) {
+      sweetAlert("Good job!", "All The Validations Passed", "success");
+      return false; // IF FALSE Will stop the submission of the form
+    },
+    onError : function($form) {
+      sweetAlert("Opps!", "Something Was Wrong", "warning");
+      return false; // IF FALSE Will stop the submission of the form
+    }
+  });
+</script>

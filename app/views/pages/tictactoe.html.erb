@@ -1,0 +1,232 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to 'Purely JavaScript Things',page_path('calculator'),class:"navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Calculator', page_path('calculator') %></li>
+        <li><%= link_to 'Custom Carousel', page_path('carousel') %></li>
+        <li class="active"><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
+        <li><%= link_to 'jQuery Form', page_path('demoform') %></li>
+        <li><%= link_to 'About', page_path('about') %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"onclick="myFunction(123)"><span class="glyphicon glyphicon-refresh"></span> Clear</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div id='tictactoe_board'>
+  <h1>JavaScript Tic-Tac-Toe</h1>
+  <div class="container bg-3 text-center">
+    <div class="row">
+      <div id='box11' class="col-xs-4"  onclick="markSpot(11)">
+      </div>
+      <div id='box12' class="col-xs-4"onclick="markSpot(12)">
+      </div>
+      <div id='box13' class="col-xs-4"onclick="markSpot(13)">
+      </div>
+    </div>
+
+      <div class="row">
+        <div id='box21' class="col-xs-4"onclick="markSpot(21)">
+        </div>
+        <div id='box22' class="col-xs-4"onclick="markSpot(22)">
+        </div>
+        <div id='box23' class="col-xs-4"onclick="markSpot(23)">
+        </div>
+      </div>
+
+        <div class="row">
+          <div id='box31' class="col-xs-4"onclick="markSpot(31)">
+          </div>
+          <div id='box32' class="col-xs-4"onclick="markSpot(32)">
+          </div>
+          <div id='box33' class="col-xs-4"onclick="markSpot(33)">
+          </div>
+        </div>
+        <%= link_to 'Start New Game', page_path('tictactoe'),class:"btn btn-info",id:"new_game" %>
+      </div>
+</div>
+
+
+<script>
+  // JAVASCRIPT HERE
+  var win=false
+  var counter=0;
+  var board = {box11: "R",box12: "R",box13: "R",box21: "R",box22: "R",box23: "R",box31: "R",box32: "R",box33: "R"};
+  function markSpot(spot) {
+    var location="#box"+spot;
+    var box=document.querySelector(location);
+    var test=box.textContent;
+    console.log(test);
+    if(test !="O" && test!="X"&&win==false){
+      if((counter%2)==0){
+         // even
+         box.textContent="X";
+         switch(spot){
+           case 11:
+             board.box11="X"
+             break;
+           case 12:
+             board.box12="X"
+             break;
+           case 13:
+             board.box13="X"
+             break;
+           case 21:
+             board.box21="X"
+             break;
+           case 22:
+             board.box22="X"
+             break;
+           case 23:
+             board.box23="X"
+             break;
+           case 31:
+             board.box31="X"
+             break;
+           case 32:
+             board.box32="X"
+             break;
+           case 33:
+             board.box33="X"
+             break;
+           default:
+           console.log("NOTHING");
+         }
+       }
+      else{
+         // odd
+         box.textContent="O";
+         switch(spot){
+           case 11:
+             board.box11="O"
+             break;
+           case 12:
+             board.box12="O"
+             break;
+           case 13:
+             board.box13="O"
+             break;
+           case 21:
+             board.box21="O"
+             break;
+           case 22:
+             board.box22="O"
+             break;
+           case 23:
+             board.box23="O"
+             break;
+           case 31:
+             board.box31="O"
+             break;
+           case 32:
+             board.box32="O"
+             break;
+           case 33:
+             board.box33="O"
+             break;
+           default:
+           console.log("NOTHING");
+         }
+       }
+       if (counter>0&&board.box11!="R"&&board.box11==board.box12&&board.box12==board.box13){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box21!="R"&&board.box21==board.box22&&board.box22==board.box23){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box31!="R"&&board.box31==board.box32&&board.box32==board.box33){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box11!="R"&&board.box11==board.box21&&board.box21==board.box31){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box12!="R"&&board.box12==board.box22&&board.box22==board.box32){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box13!="R"&&board.box13==board.box23&&board.box23==board.box33){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box11!="R"&&board.box11==board.box22&&board.box22==board.box33){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       if (counter>0&&board.box13!="R"&&board.box13==board.box22&&board.box22==board.box31){
+         if((counter%2)==0){
+         alert("X's WIN");
+         win=true;
+        }else{
+         alert("O's WIN");
+         win=true;
+        }
+       }
+
+       counter+=1;
+       if (counter>8){
+         alert("No More Turns, No Winner!");
+         win=true;
+       }
+     }
+
+
+  }
+</script>

@@ -1,0 +1,142 @@
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <%= link_to 'Purely JavaScript Things',page_path('calculator'),class:"navbar-brand" %>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to 'Calculator', page_path('calculator') %></li>
+          <li><%= link_to 'Custom Carousel',  page_path('carousel') %></li>
+          <li><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
+          <li><%= link_to 'jQuery Form', page_path('demoform') %></li>
+
+          <li><%= link_to 'About',page_path('about') %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"onclick="myFunction(123)"><span class="glyphicon glyphicon-refresh"></span> Clear</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1>JavaScript Calculator</h1>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h2>Do Some Maths</h2>
+    </div>
+  </div>
+
+  <div class="container bg-3 text-center">
+    <div class="row">
+      <div id='clear' class="col-xs-2 col-sm-offset-1" onclick="myFunction(123)">
+        C
+      </div>
+      <div id='clear' class="col-xs-2 col-sm-offset-1">
+         	&nbsp;
+      </div>
+      <div id='mutiply' class="col-xs-2 col-sm-offset-1" onclick="myFunction(999)">
+        <-
+      </div>
+      <div id='divide' class="col-xs-2 col-sm-offset-1" onclick="myFunction('/')">
+        /
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container bg-3 text-center">
+    <div class="row">
+      <div id='7' class="col-xs-2 col-sm-offset-1" onclick="myFunction(7)">
+        7
+      </div>
+      <div id='8' class="col-xs-2 col-sm-offset-1" onclick="myFunction(8)">
+        8
+      </div>
+      <div id='9' class="col-xs-2 col-sm-offset-1" onclick="myFunction(9)">
+        9
+      </div>
+      <div id='minus' class="col-xs-2 col-sm-offset-1" onclick="myFunction('-')">
+        -
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container bg-3 text-center">
+    <div class="row">
+      <div id='4' class="col-xs-2 col-sm-offset-1" onclick="myFunction(4)">
+        4
+      </div>
+      <div id='5' class="col-xs-2 col-sm-offset-1" onclick="myFunction(5)">
+        5
+      </div>
+      <div id='6' class="col-xs-2 col-sm-offset-1" onclick="myFunction(6)">
+        6
+      </div>
+      <div id='plus' class="col-xs-2 col-sm-offset-1" onclick="myFunction('+')">
+        +
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container bg-3 text-center">
+    <div class="row">
+      <div id='1' class="col-xs-2 col-sm-offset-1" onclick="myFunction(1)">
+        1
+      </div>
+      <div id='2' class="col-xs-2 col-sm-offset-1" onclick="myFunction(2)">
+        2
+      </div>
+      <div id='3' class="col-xs-2 col-sm-offset-1" onclick="myFunction(3)">
+        3
+      </div>
+      <div id='0' class="col-xs-2 col-sm-offset-1" onclick="myFunction('*')">
+        *
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container bg-3 text-center">
+    <div class="row">
+      <div id='0' class="col-xs-2 col-sm-offset-1" onclick="myFunction(0)">
+        0
+      </div>
+      <div id='.' class="col-xs-2 col-sm-offset-1" onclick="myFunction('.')">
+        .
+      </div>
+      <div id='equal' class="col-xs-5 col-sm-offset-1" onclick="myFunction(345)">
+        =
+      </div>
+    </div>
+  </div><br><br>
+
+  <footer class="container-fluid">
+  <p>JavaScript Calculator</p>
+  </footer>
+
+  <script>
+    // JAVASCRIPT HERE
+    var ddisplay=document.querySelector(".jumbotron h2");
+      var array=[]
+      var re = /,/gi;
+    function myFunction(id) {
+      if (id===123){
+        array=[]
+        ddisplay.textContent="Do Some Maths";
+      } else if (id===345) {
+        ddisplay.textContent=eval(array.join().replace(re,""));
+        array[0]=eval(array.join().replace(re,""));
+        array.length=1;
+      } else if (id===999) {
+        array.pop();
+        ddisplay.textContent=array.join().replace(re,"");
+      } else{
+          array.push(id);
+          ddisplay.textContent=array.join().replace(re,"");
+      }
+    }
+  </script>

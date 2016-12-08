@@ -1,0 +1,362 @@
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Purely JavaScript Things',page_path('calculator'),class:"navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Calculator', page_path('calculator') %></li>
+        <li class="active"><%= link_to 'Custom Carousel', page_path('carousel') %></li>
+        <li><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
+        <li><%= link_to 'jQuery Form', page_path('demoform') %></li>
+        <li><%= link_to 'About', page_path('about') %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"onclick="myFunction(123)"><span class="glyphicon glyphicon-refresh"></span> Clear</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="wrapper">
+    <h1>JavaScript Carousel</h1>
+  <div id="back" class="button"onclick="backPic()">
+  </div>
+  <div id="c_carousel">
+       <div><%=image_tag("1.jpg", alt: "Example Image",id:"1")%></div>
+  </div>
+  <div id="next" class="button"onclick="nextPic()">
+  </div>
+  <br>
+  <div class="pic_button"onclick="customPic(1)"></div>
+  <div class="pic_button"onclick="customPic(2)"></div>
+  <div class="pic_button"onclick="customPic(3)"></div>
+  <div class="pic_button"onclick="customPic(4)"></div>
+  <div class="pic_button"onclick="customPic(5)"></div>
+  <div class="pic_button"onclick="customPic(6)"></div>
+  <div class="pic_button"onclick="customPic(7)"></div>
+  <h2>Carousel made from scratch unlike the one in the about page which  is from a plug-in </h2>
+</div>
+<div id="hidden_pics">
+  <%=image_tag("1.jpg", alt: "Example Image",id:"one")%>
+  <%=image_tag("2.jpg", alt: "Example Image",id:"two")%>
+  <%=image_tag("3.jpg", alt: "Example Image",id:"three")%>
+  <%=image_tag("4.jpg", alt: "Example Image",id:"four")%>
+  <%=image_tag("5.jpg", alt: "Example Image",id:"five")%>
+  <%=image_tag("6.jpg", alt: "Example Image",id:"six")%>
+  <%=image_tag("7.jpg", alt: "Example Image",id:"seven")%>
+</div>
+
+<footer class="container-fluid">
+<p>JavaScript Calculator</p>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  // JAVASCRIPT HERE
+jQuery(document).ready(function() {
+  setCarousel()
+});
+var one_pic=document.querySelector("#one");
+var two_pic=document.querySelector("#two");
+var three_pic=document.querySelector("#three");
+var four_pic=document.querySelector("#four");
+var five_pic=document.querySelector("#five");
+var six_pic=document.querySelector("#six");
+var seven_pic=document.querySelector("#seven");
+var carousel=document.querySelector("#c_carousel img");
+var next=document.querySelector("#next");
+function setCarousel(id) {
+    console.log(carousel.src);
+    console.log(carousel.id);
+}
+
+
+function nextPic() {
+  if (carousel.src===one_pic.src){
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=two_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===two_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=three_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===three_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=four_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===four_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=five_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===five_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=six_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===six_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=seven_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===seven_pic.src) {
+    carousel.src=one_pic.src
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=one_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  }
+};
+
+function backPic() {
+  if (carousel.src===one_pic.src){
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=seven_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===two_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=one_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===three_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=two_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===four_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=three_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===five_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=four_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===six_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=five_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  } else if (carousel.src===seven_pic.src) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=six_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+  }
+};
+
+
+function customPic(id) {
+  if (id===1){
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=one_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+} else if (id===2) {
+  $("#c_carousel img").animate({
+  opacity: 0,
+}, 150, function() {
+  // Animation complete.
+  carousel.src=two_pic.src
+});
+  $("#c_carousel img").animate({
+  opacity: 1,
+}, 150, function() {
+  // Animation complete.
+});
+  } else if (id===3) {
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=three_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+} else if (id===4){
+  $("#c_carousel img").animate({
+  opacity: 0,
+}, 150, function() {
+  // Animation complete.
+  carousel.src=four_pic.src
+});
+  $("#c_carousel img").animate({
+  opacity: 1,
+}, 150, function() {
+  // Animation complete.
+});
+  }else if (id===5){
+    $("#c_carousel img").animate({
+    opacity: 0,
+  }, 150, function() {
+    // Animation complete.
+    carousel.src=five_pic.src
+  });
+    $("#c_carousel img").animate({
+    opacity: 1,
+  }, 150, function() {
+    // Animation complete.
+  });
+}else if (id===6){
+  $("#c_carousel img").animate({
+  opacity: 0,
+}, 150, function() {
+  // Animation complete.
+  carousel.src=six_pic.src
+});
+  $("#c_carousel img").animate({
+  opacity: 1,
+}, 150, function() {
+  // Animation complete.
+});
+}else if (id===7){
+  $("#c_carousel img").animate({
+  opacity: 0,
+}, 150, function() {
+  // Animation complete.
+  carousel.src=seven_pic.src
+});
+  $("#c_carousel img").animate({
+  opacity: 1,
+}, 150, function() {
+  // Animation complete.
+});
+}
+}
+
+</script>
