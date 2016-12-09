@@ -15,6 +15,7 @@
         <li><%= link_to 'Custom Carousel', page_path('carousel') %></li>
         <li><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
         <li><%= link_to 'jQuery Form', page_path('demoform') %></li>
+        <li><%= link_to 'AJAX API', page_path('ajaxapi') %></li>
         <li class="active"><%= link_to 'About', page_path('about') %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -109,11 +110,11 @@ function footer(mood) {
 }
 
 
-  // CAN CALL PLUG IN HERE!!!
   $(".owl-carousel").owlCarousel({
     autoPlay: 3000, //Set AutoPlay to 3 seconds
     items : 3,
     itemsDesktop : [1199,3],
     itemsDesktopSmall : [979,3]
 });
+
 </script>

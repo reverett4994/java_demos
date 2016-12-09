@@ -26,6 +26,9 @@
  // They will automatically be included in application.css.
  // You can use Sass (SCSS) here: http://sass-lang.com/
  /* Remove the navbar's default margin-bottom and rounded borders */
+ .center_h2{
+   text-align: center;
+ }
  .navbar {
    margin-bottom: 0;
    border-radius: 0;

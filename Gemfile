@@ -45,6 +45,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
-gem 'owlcarousel-rails'
 gem 'high_voltage', '~> 3.0.0'
 gem 'sweetalert-rails'
+gem 'owlcarousel-rails'

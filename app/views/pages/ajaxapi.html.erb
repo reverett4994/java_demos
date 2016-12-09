@@ -1,0 +1,113 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to 'Purely JavaScript Things',page_path('calculator'),class:"navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Calculator', page_path('calculator') %></li>
+        <li><%= link_to 'Custom Carousel', page_path('carousel') %></li>
+        <li><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
+        <li><%= link_to 'jQuery Form', page_path('demoform') %></li>
+        <li class="active"><%= link_to 'AJAX API', page_path('ajaxapi') %></li>
+        <li><%= link_to 'About', page_path('about') %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"onclick="myFunction(123)"><span class="glyphicon glyphicon-refresh"></span> Clear</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="page-header">
+    <h1>Demo Form Using AJAX for API Requests</h1>
+    <h2 class='center_h2'>Searching OMDB for Movie Titles That Include <p id="movie_title" style="display:inline-block">toy</p></h2>
+    <h3 class='center_h2'>Also Features Endless Scrolling</h3>
+  </div>
+
+  <form class="form-horizontal" action="javascript:movieSearch();">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="title">Search For Any Title or Keyword</label>
+      <div class="col-sm-10">
+        <input name="title" type="text" class="form-control" value="" placeholder="Title or Keyword">
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit"  class="btn btn-default">Search</button>
+      </div>
+    </div>
+  </form>
+
+
+  <div class='movies'></div>
+
+</div>
+
+
+
+<script>
+function movieSearch(){
+  $(".movies").empty();
+  var t=$('input:text').val();
+  $("p#movie_title").text(t);
+  var counter=1;
+   $.getJSON("http://www.omdbapi.com/?s="+ t.toString() +"&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
+     for(i=0;i<10;i++){
+       console.log(counter);
+       var title=$("<h2></h2>").text(data.Search[i].Title);
+       var year=$("<h3></h3>").text("Year: "+data.Search[i].Year);
+       $(".movies").append(title);
+       $(".movies").append(year);
+       $(".movies").append($('<img>',{id:'theImg',src:data.Search[i].Poster}))
+       $(".movies").append("<hr>");
+     }
+     counter+=1
+   });
+}
+
+
+
+
+
+var counter=1
+ $.getJSON("http://www.omdbapi.com/?s=toy&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
+   for(i=0;i<10;i++){
+     console.log(counter);
+     var title=$("<h2></h2>").text(data.Search[i].Title);
+     var year=$("<h3></h3>").text("Year: "+data.Search[i].Year);
+     $(".movies").append(title);
+     $(".movies").append(year);
+     $(".movies").append($('<img>',{id:'theImg',src:data.Search[i].Poster}))
+     $(".movies").append("<hr>");
+   }
+   counter+=1
+ });
+ $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() == $(document).height()) {
+      var t=$('p#movie_title').html();
+      console.log(t)
+      $.getJSON("http://www.omdbapi.com/?s="+ t.toString() +"&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
+        for(i=0;i<10;i++){
+          console.log(counter);
+          var title=$("<h2></h2>").text(data.Search[i].Title);
+          var year=$("<h3></h3>").text("Year: "+data.Search[i].Year);
+          $(".movies").append(title);
+          $(".movies").append(year);
+          $(".movies").append($('<img>',{id:'theImg',src:data.Search[i].Poster}))
+          $(".movies").append("<hr>");
+        }
+        counter+=1
+      });
+    }
+ });
+</script>
