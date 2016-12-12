@@ -1,0 +1,118 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to 'Purely JavaScript Things',page_path('calculator'),class:"navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Calculator', page_path('calculator') %></li>
+        <li><%= link_to 'Custom Carousel', page_path('carousel') %></li>
+        <li><%= link_to 'Tic-Tac-Toe', page_path('tictactoe') %></li>
+        <li><%= link_to 'jQuery Form', page_path('demoform') %></li>
+        <li><%= link_to 'AJAX API', page_path('ajaxapi') %></li>
+        <li class="active"><%= link_to 'Google Maps API', page_path('map') %></li>
+        <li><%= link_to 'About', page_path('about') %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"onclick="myFunction(123)"><span class="glyphicon glyphicon-refresh"></span> Clear</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Google Maps API Demo</h1>
+    <h3 class="center_h2">Click Pin to See Label</h3>
+    <h3 id="showing" class="center_h2">Click Pin to See Label</h3>
+  </div>
+  <div id="map"></div>
+
+
+  <form class="form-horizontal" action="javascript:initMap();">
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="latitude">Latitude:</label>
+     <div class="col-sm-10">
+       <input name="latitude" data-validation-help="-90 to 90" data-validation="required" type="text" class="form-control" id="latitude" placeholder="Latitude">
+     </div>
+   </div>
+
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="longitude">Longitude:</label>
+     <div class="col-sm-10">
+       <input name="longitude" data-validation-help="-180 to 180" data-validation="required" type="text" class="form-control" id="longitude" placeholder="Longitude">
+     </div>
+   </div>
+
+   <div class="form-group">
+     <label class="control-label col-sm-2" for="label">Label:</label>
+     <div class="col-sm-10">
+       <input name="label" data-validation-help="Label for Location Optional" type="text" class="form-control" id="message" placeholder="Label">
+     </div>
+   </div>
+
+   <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10">
+       <button type="submit"  class="btn btn-default">Go!</button>
+     </div>
+   </div>
+  </form>
+
+</div>
+
+
+
+
+<script>
+$.validate({
+  lang: 'en',
+  modules : 'security',
+  onError : function($form) {
+    sweetAlert("Opps!", "Something Was Wrong", "warning");
+    return false; // IF FALSE Will stop the submission of the form
+  }
+});
+
+  function initMap(latitude=40.217,longitude=-74.742,message="") {
+    if ($("#longitude").val() !==""){
+      var longitude= parseFloat($("#longitude").val());
+    }
+    if ($("#latitude").val() !==""){
+      var latitude= parseFloat($("#latitude").val());
+    }
+    var uluru = {lat: latitude, lng: longitude};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+      animation: google.maps.Animation.DROP
+    });
+
+
+  if ($("#message").val() !==""){
+      var message= $("#message").val();
+  }
+  var contentString = message;
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+
+   marker.addListener('click', function() {
+     infowindow.open(map, marker);
+   });
+   $("#showing").text("Showing Latitude "+latitude+" and Logitude "+longitude)
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWLvPvhBVTQDyp3_QsZoc1AbvCPAD1C4k&callback=initMap">
+</script>
