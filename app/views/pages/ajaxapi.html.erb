@@ -62,7 +62,7 @@ function movieSearch(){
   var t=$('input:text').val();
   $("p#movie_title").text(t);
   var counter=1;
-   $.getJSON("http://www.omdbapi.com/?s="+ t.toString() +"&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
+   $.getJSON("https://www.omdbapi.com/?s="+ t.toString() +"&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
      for(i=0;i<10;i++){
        console.log(counter);
        var title=$("<h2></h2>").text(data.Search[i].Title);
