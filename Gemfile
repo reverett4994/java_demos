@@ -48,3 +48,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'high_voltage', '~> 3.0.0'
 gem 'sweetalert-rails'
 gem 'owlcarousel-rails'
+
+gem 'rails_12factor', group: :production
