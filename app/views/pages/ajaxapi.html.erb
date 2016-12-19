@@ -81,7 +81,7 @@ function movieSearch(){
 
 
 var counter=1
- $.getJSON("http://www.omdbapi.com/?s=toy&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
+ $.getJSON("https://www.omdbapi.com/?s=toy&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
    for(i=0;i<10;i++){
      console.log(counter);
      var title=$("<h2></h2>").text(data.Search[i].Title);
@@ -97,7 +97,7 @@ var counter=1
     if($(window).scrollTop() + $(window).height() == $(document).height()) {
       var t=$('p#movie_title').html();
       console.log(t)
-      $.getJSON("http://www.omdbapi.com/?s="+ t.toString() +"&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
+      $.getJSON("https://www.omdbapi.com/?s="+ t.toString() +"&y=&plot=full&type=movie&page="+ counter.toString() +"&r=json",function(data){
         for(i=0;i<10;i++){
           console.log(counter);
           var title=$("<h2></h2>").text(data.Search[i].Title);
